@@ -140,9 +140,7 @@ static char *camera_fixup_setparams(int id, const char *settings)
     }
     if (videoMode) {
         params.set("zsl", "off");
-    } else {
-        params.set("zsl", "on");
-    }
+       }
 
     /* HDR */
     if (params.get(android::CameraParameters::KEY_SCENE_MODE)) {
@@ -151,6 +149,7 @@ static char *camera_fixup_setparams(int id, const char *settings)
     if (hdrMode) {
         params.set(KEY_QC_MORPHO_HDR, "true");
         params.set(android::CameraParameters::KEY_FLASH_MODE, android::CameraParameters::FLASH_MODE_OFF);
+        params.set("zsl", "on");
     } else {
         params.set(KEY_QC_MORPHO_HDR, "false");
     }
